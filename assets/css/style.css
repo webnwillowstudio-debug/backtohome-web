@@ -540,3 +540,16 @@ section{position:relative}
   .tile strong{font-size:.68rem;letter-spacing:.09em}
   .tile span{font-size:.74rem}
 }
+
+/* ---------- Designer credit (webnwillow) — minimal ---------- */
+.foot-bottom{align-items:center}
+.wnw{display:inline-flex;align-items:center;gap:.6rem;color:#F2F197;cursor:default}
+.wnw-by{font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.wnw-logo{position:relative;display:inline-flex;align-items:center;gap:.4rem;padding-bottom:2px}
+.wnw-logo::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.wnw-mark{width:17px;height:auto;fill:currentColor;display:block;transition:transform .5s var(--ease)}
+.wnw-word{font-family:var(--sans);font-weight:500;font-size:.95rem;letter-spacing:-.03em;line-height:1}
+.wnw-word i{font-family:var(--serif);font-style:italic;font-size:1.28em;margin:0 .02em;display:inline-block;transform:translateY(.03em);transition:transform .5s var(--ease)}
+.wnw:hover .wnw-logo::after{transform:scaleX(1)}
+.wnw:hover .wnw-mark{transform:rotate(-8deg)}
+.wnw:hover .wnw-word i{transform:translateY(.03em) rotate(-12deg)}
