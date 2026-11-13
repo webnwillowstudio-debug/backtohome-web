@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#0F3D2A"/>
+  <path d="M12 31 32 14l20 17" stroke="#C9A24B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18 27v21a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V27" stroke="#C9A24B" stroke-width="2" stroke-linecap="round" opacity=".45"/>
+  <circle cx="32" cy="37" r="10" stroke="#E6C97A" stroke-width="2.4"/>
+  <path d="M22 37h20M32 27c-4.6 5.4-4.6 14.6 0 20M32 27c4.6 5.4 4.6 14.6 0 20" stroke="#E6C97A" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="32" cy="14" r="2.6" fill="#E6C97A"/>
+  <text x="80" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-size="25" font-weight="700" fill="#0F3D2A" letter-spacing="1.5">BACK TO HOME</text>
+  <text x="81" y="52" font-family="Arial, sans-serif" font-size="10.5" fill="#A8873A" letter-spacing="2.2">GLOBAL RESOURCES · A STRONGER KERALA</text>
+</svg>
