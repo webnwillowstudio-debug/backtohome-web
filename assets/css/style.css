@@ -618,13 +618,6 @@ h1 em,h2 em,h3 em,em.accent{font-family:var(--serif);font-style:italic;font-weig
 .hero .tile span{color:rgba(255,255,255,.55)}
 
 /* header sits transparent over the dark hero until scroll */
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled){background:transparent;border-bottom-color:rgba(255,255,255,.07);-webkit-backdrop-filter:none;backdrop-filter:none}
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .brand-text strong{color:#fff}
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .nav a:not(.btn){color:rgba(255,255,255,.72)}
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .nav a:not(.btn):hover,
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .nav a.active{color:#fff}
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .header-cta .btn-gold{background:var(--gold);color:var(--green-950)}
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .menu-btn{color:#fff;border-color:rgba(255,255,255,.2)}
 
 @media (max-width:1080px){
   .hero-grid{grid-template-columns:1fr;gap:3rem}
@@ -648,7 +641,6 @@ body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .menu-btn{color:#fff
 .wordmark i{font-family:var(--serif);font-style:italic;font-weight:500;font-size:.92em;letter-spacing:0;color:var(--gold);margin:0 .14em 0 .1em;transform:translateY(-.02em)}
 .brand-text small{margin-top:5px;font-size:.56rem;letter-spacing:.24em}
 .site-header .brand-text strong.wordmark{color:var(--green-950)}
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .wordmark i{color:var(--gold-300)}
 .site-footer .wordmark i{color:var(--gold-300)}
 
 /* ---------- Mobile hero: lighter, less text ---------- */
@@ -725,7 +717,6 @@ body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .wordmark i{color:va
 /* ---------- Logotype (replaces wordmark) ---------- */
 .brand-text strong.logotype{font-family:var(--display);font-weight:700;font-size:1.06rem;letter-spacing:.16em;line-height:1;color:var(--green-950);text-transform:uppercase}
 .brand-text strong.logotype+small{margin-top:6px;font-size:.54rem;letter-spacing:.26em}
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .brand-text strong.logotype{color:#fff}
 .site-footer .brand-text strong.logotype{color:#fff}
 .preloader strong.logotype{font-family:var(--display);font-weight:700;font-size:1.7rem;letter-spacing:.2em;color:#fff}
 @media (max-width:620px){.brand-text strong.logotype{font-size:.95rem;letter-spacing:.14em}}
@@ -800,12 +791,6 @@ html.first-visit .preloader{background:var(--cream);color:var(--ink)}
 .preloader::before{background:rgba(46,122,87,.12)}
 .preloader .pl-bar{background:rgba(15,61,42,.08)}
 
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled){background:rgba(252,250,248,.75);border-bottom-color:rgba(15,61,42,.06);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .nav a:not(.btn){color:rgba(20,28,23,.72)}
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .nav a:not(.btn):hover,
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .nav a.active{color:var(--green)}
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .header-cta .btn-gold{background:var(--green);color:#fff}
-body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .menu-btn{color:var(--ink);border-color:var(--line)}
 
 .hero{background:linear-gradient(180deg,#F2F7F3 0%,var(--cream) 85%);color:var(--ink)}
 .hero::before{background:radial-gradient(circle,rgba(46,122,87,.13),rgba(46,122,87,.04) 45%,transparent 68%);filter:blur(20px)}
@@ -1093,3 +1078,37 @@ body:has(.hero):not(.menu-open) .site-header:not(.scrolled) .menu-btn{color:var(
   .aud2{border-radius:22px}
   .aud2-body{padding:1.9rem .9rem 1.1rem}
 }
+
+/* =========================================================
+   PERFORMANCE
+   - no CSS blur filters (soft glows via radial gradients)
+   - solid header (no backdrop blur repaint on scroll)
+   - faster, lighter reveal + heading animations
+   - off-screen sections skip rendering (content-visibility)
+   ========================================================= */
+.preloader::before,.hero::before,.page-hero::before,.glow-gold,.hero .glow-gold,.bg-green::before,
+.quote-card::after,.prog-top::after,.cta::before,.ml-band::before{filter:none!important}
+.preloader::before{background:radial-gradient(circle,rgba(46,122,87,.14),transparent 70%)}
+.hero::before{background:radial-gradient(circle,rgba(46,122,87,.12),rgba(46,122,87,.04) 45%,transparent 68%)}
+.page-hero::before{background:radial-gradient(ellipse at center,rgba(15,61,42,.07),transparent 70%)}
+.glow-gold,.hero .glow-gold{background:radial-gradient(circle,rgba(201,162,75,.2),transparent 70%)}
+.bg-green::before{background:radial-gradient(ellipse at center,rgba(46,122,87,.1),transparent 70%)}
+.quote-card::after{background:radial-gradient(circle,rgba(201,162,75,.24),transparent 70%)}
+.prog-top::after{background:radial-gradient(circle,rgba(201,162,75,.2),transparent 70%)}
+.cta::before{background:radial-gradient(circle,rgba(201,162,75,.24),transparent 70%)}
+
+.site-header,.site-header.scrolled{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(252,250,248,.97)}
+.hc-head i{animation:none}
+
+/* lighter reveal */
+.reveal{transform:translateY(16px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.reveal.d1{transition-delay:.04s}.reveal.d2{transition-delay:.08s}.reveal.d3{transition-delay:.12s}.reveal.d4{transition-delay:.16s}.reveal.d5{transition-delay:.2s}
+.split-words .w>span{transition:transform .6s var(--ease)}
+
+
+/* cheaper hover effects on large cards */
+.aud2:hover .aud2-img img{filter:none}
+.vb::after,.vb::before{will-change:auto}
+
+/* hero lead: brand name as a highlighted mark */
+.hero .lead b.hl{font-family:"Outfit",var(--display);font-weight:800;font-size:1.04em;letter-spacing:-.01em;text-transform:none;color:var(--green);white-space:nowrap;padding:0 .2em;margin:0 .05em;border-radius:.2em;background:linear-gradient(180deg,transparent 46%,rgba(226,199,126,.72) 46%,rgba(226,199,126,.72) 94%,transparent 94%);-webkit-box-decoration-break:clone;box-decoration-break:clone}

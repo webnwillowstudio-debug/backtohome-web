@@ -13,12 +13,14 @@
   /* Header */
   const header = $(".site-header");
   const toTop = $(".to-top");
+  let ticking = false, lastA, lastB;
   const onScroll = () => {
-    const y = window.scrollY;
-    header && header.classList.toggle("scrolled", y > 30);
-    toTop && toTop.classList.toggle("show", y > 700);
+    ticking = false;
+    const y = window.scrollY, a = y > 30, b = y > 700;
+    if (a !== lastA) { header && header.classList.toggle("scrolled", a); lastA = a; }
+    if (b !== lastB) { toTop && toTop.classList.toggle("show", b); lastB = b; }
   };
-  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
   $(".menu-btn")?.addEventListener("click", () => document.body.classList.toggle("menu-open"));
   $$(".nav a").forEach((a) => a.addEventListener("click", () => document.body.classList.remove("menu-open")));
@@ -191,8 +193,16 @@
     };
     nav.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { show(+b.dataset.i); stop(); } });
     panel.addEventListener("click", (e) => { const b = e.target.closest("[data-d]"); if (b) { show(cur + +b.dataset.d); stop(); } });
-    const stop = () => clearInterval(timer);
-    timer = setInterval(() => show(cur + 1), 7000);
+    let userStopped = false;
+    const stop = () => { userStopped = true; clearInterval(timer); timer = null; };
+    // autoplay only while the framework is on screen
+    const fwBox = nav.closest(".framework") || panel;
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([en]) => {
+        if (en.isIntersecting && !timer && !userStopped) timer = setInterval(() => show(cur + 1), 7000);
+        else if (!en.isIntersecting && timer) { clearInterval(timer); timer = null; }
+      }, { threshold: 0.25 }).observe(fwBox);
+    }
     show(0);
   }
 
@@ -218,7 +228,7 @@
             if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(" ")); return; }
             const w = document.createElement("span"); w.className = "w";
             const i = document.createElement("span"); i.textContent = part;
-            i.style.transitionDelay = (0.1 + n++ * 0.06).toFixed(2) + "s";
+            i.style.transitionDelay = (0.05 + Math.min(n++, 12) * 0.035).toFixed(3) + "s";
             w.appendChild(i); frag.appendChild(w);
           });
           c.replaceWith(frag);
@@ -246,9 +256,11 @@
   const root = document.documentElement;
   if (root.classList.contains("first-visit")) {
     const t0 = performance.now();
-    const done = () => setTimeout(() => { root.classList.add("loaded"); setTimeout(observe, 250); }, Math.max(0, 1300 - (performance.now() - t0)));
-    if (document.readyState === "complete") done(); else window.addEventListener("load", done, { once: true });
-    setTimeout(() => { if (!root.classList.contains("loaded")) { root.classList.add("loaded"); observe(); } }, 3000);
+    let fired = false;
+    const done = () => { if (fired) return; fired = true; setTimeout(() => { root.classList.add("loaded"); observe(); }, Math.max(0, 450 - (performance.now() - t0))); };
+    // don't wait for every image/font: show the page as soon as fonts are ready (max 1.2s)
+    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(done);
+    setTimeout(done, 1200);
   } else observe();
 
   /* Apply form: multi-step */
