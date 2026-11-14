@@ -25,6 +25,29 @@
   toTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
   $$("[data-year]").forEach((e) => (e.textContent = new Date().getFullYear()));
 
+  /* Sector explorer (tabs) */
+  const sx = $(".sx");
+  if (sx) {
+    const tabs = $$(".sx-tab", sx), panes = $$(".sx-pane", sx);
+    const show = (i, focus) => {
+      tabs.forEach((t, j) => { t.classList.toggle("active", j === i); t.setAttribute("aria-selected", j === i); t.tabIndex = j === i ? 0 : -1; });
+      panes.forEach((p, j) => {
+        p.hidden = j !== i;
+        if (j === i) { p.classList.remove("fade-swap"); void p.offsetWidth; p.classList.add("fade-swap"); }
+      });
+      if (focus) tabs[i].focus();
+      if (matchMedia("(max-width:900px)").matches) tabs[i].scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+    };
+    tabs.forEach((t, i) => {
+      t.tabIndex = i === 0 ? 0 : -1;
+      t.addEventListener("click", () => show(i));
+      t.addEventListener("keydown", (e) => {
+        const k = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+        if (k) { e.preventDefault(); show((i + k + tabs.length) % tabs.length, true); }
+      });
+    });
+  }
+
   /* Program card */
   const progCard = (p, i = 0) => `
     <article class="prog reveal d${(i % 3) + 1}" data-cat="${esc(p.category)}">
@@ -111,7 +134,7 @@
       <div>
         <h2>Program overview</h2>
         <p class="lead">${esc(p.summary)}</p>
-        <div class="quote-card no-mark" style="padding:1.6rem 2rem;margin:1.6rem 0"><p style="font-size:1.1rem;margin:0"><b style="color:var(--gold-300)">Ideal for:</b> ${esc(p.idealFor)}</p></div>
+        <div class="quote-card no-mark" style="padding:1.6rem 2rem;margin:1.6rem 0"><p style="font-size:1.1rem;margin:0"><b style="color:var(--gold-600)">Ideal for:</b> ${esc(p.idealFor)}</p></div>
         <h2>What you will achieve</h2>
         <div class="outcomes">${p.outcomes.map((o) => `<div>${esc(o)}</div>`).join("")}</div>
         <h2>Curriculum</h2>

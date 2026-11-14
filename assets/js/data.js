@@ -7,6 +7,92 @@
 
 window.BTH_PROGRAMS = [
   {
+    id: "global-expert-network",
+    name: "Global Expert Network",
+    category: "Global Expertise",
+    tagline: "Your expertise, from anywhere in the world, working for Kerala.",
+    duration: "Ongoing",
+    mode: "Online · Global",
+    cohort: "Open membership",
+    level: "All levels",
+    fee: "Free",
+    feeNote: "Demo · membership",
+    start: "Join anytime",
+    idealFor: "Malayali professionals worldwide who want to contribute their skills to Kerala without relocating",
+    summary:
+      "The heart of the BACK TO HOME platform. Register your expertise and get matched with Kerala's entrepreneurs, institutions and communities for advisory work, expert sessions and project support, all from wherever you live.",
+    outcomes: [
+      "A verified global expert profile",
+      "Matched advisory and project requests",
+      "Expert talks with Kerala institutions",
+      "A recognised contribution record"
+    ],
+    modules: [
+      { t: "Expert Profile", d: "Showcase your field, experience, skills and how much time you can give." },
+      { t: "Needs Matching", d: "Get matched to real requests from Kerala ventures, colleges, hospitals and local bodies." },
+      { t: "Advisory Sessions", d: "Short online consultations that solve specific problems." },
+      { t: "Expert Talks", d: "Share global best practice with students, professionals and founders in Kerala." },
+      { t: "Impact Record", d: "Track every contribution and the difference it made." }
+    ]
+  },
+  {
+    id: "kerala-mentor-corps",
+    name: "Kerala Mentor Corps",
+    category: "Global Expertise",
+    tagline: "Mentor the next generation of Kerala's founders and professionals.",
+    duration: "6 Months",
+    mode: "Online + Kerala Visits",
+    cohort: "40 mentors",
+    level: "Experienced",
+    fee: "Free",
+    feeNote: "Demo · volunteer program",
+    start: "February 2027",
+    idealFor: "Senior professionals and business leaders abroad with 10+ years of experience",
+    summary:
+      "A structured mentoring program pairing experienced global Malayalis with young entrepreneurs, startups and graduates in Kerala. Monthly sessions turn your career lessons into Kerala's growth.",
+    outcomes: [
+      "Paired with 2–3 Kerala mentees",
+      "Mentor training & toolkit",
+      "Monthly progress reviews",
+      "Mentor Corps certification"
+    ],
+    modules: [
+      { t: "Mentor Orientation", d: "Kerala's startup and career landscape, and how to mentor effectively." },
+      { t: "Mentee Matching", d: "Paired by sector, skills and goals for the best fit." },
+      { t: "Monthly Mentoring", d: "Structured one-on-one sessions with clear goals and follow-ups." },
+      { t: "Kerala Meet-up", d: "Meet your mentees and fellow mentors in person during your visit home." }
+    ]
+  },
+  {
+    id: "knowledge-transfer-fellowship",
+    name: "Knowledge Transfer Fellowship",
+    category: "Global Expertise",
+    tagline: "Bring world-class practice home through hands-on projects in Kerala.",
+    duration: "3 Months",
+    mode: "Hybrid · On-site Project",
+    cohort: "15 fellows",
+    level: "Advanced",
+    fee: "₹10,000",
+    feeNote: "Demo fee · per fellow",
+    start: "April 2027",
+    idealFor: "Specialists in healthcare, technology, engineering, education or management who want to lead a short project in Kerala",
+    summary:
+      "Fellows lead focused projects with Kerala institutions and enterprises, transferring global systems, standards and skills so the impact stays long after the project ends.",
+    outcomes: [
+      "A completed impact project in Kerala",
+      "Systems and skills handed over locally",
+      "Partnership with a Kerala institution",
+      "Fellowship recognition"
+    ],
+    modules: [
+      { t: "Project Scoping", d: "Define a clear problem and success measures with a host institution." },
+      { t: "Remote Preparation", d: "Plan the work, gather data and build the team before you arrive." },
+      { t: "On-site Sprint", d: "Two to four weeks in Kerala implementing the solution with local staff." },
+      { t: "Handover & Training", d: "Train local teams so the improvement lasts." },
+      { t: "Impact Report", d: "Measure and share results with the network." }
+    ]
+  },
+  {
     id: "homecoming-blueprint",
     name: "Homecoming Blueprint",
     category: "Return Planning",

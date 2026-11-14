@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-label="A growing shopfront business with an upward arrow">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF4E2"/><stop offset="1" stop-color="#EEF4F0"/></linearGradient>
+  </defs>
+  <rect width="400" height="260" fill="url(#bg)"/>
+  <circle cx="330" cy="62" r="40" fill="#E2C77E" opacity=".35"/>
+  <path d="M260 120 L300 84 L326 100 L366 52" fill="none" stroke="#C9A24B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M346 50 H368 V72" fill="none" stroke="#C9A24B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(70 70)">
+    <rect x="0" y="40" width="190" height="124" fill="#FCFAF8" stroke="#DCE7DF" stroke-width="3"/>
+    <rect x="-8" y="0" width="206" height="30" rx="4" fill="#0F3D2A"/>
+    <rect x="58" y="7" width="90" height="16" rx="3" fill="#C9A24B"/>
+    <g>
+      <path d="M-8 30 H198 L188 60 H2 Z" fill="#1A5A3E"/>
+      <path d="M18 30 L14 60 M44 30 L42 60 M70 30 L70 60 M96 30 L98 60 M122 30 L126 60 M148 30 L154 60 M174 30 L182 60" stroke="#FCFAF8" stroke-width="10" opacity=".9"/>
+      <path d="M2 60 Q15 70 28 60 Q41 70 54 60 Q67 70 80 60 Q93 70 106 60 Q119 70 132 60 Q145 70 158 60 Q171 70 188 60" fill="#1A5A3E"/>
+    </g>
+    <rect x="18" y="82" width="74" height="56" rx="4" fill="#B9D6C3"/>
+    <path d="M30 120 H80 M30 104 H66" stroke="#2E7A57" stroke-width="5" stroke-linecap="round"/>
+    <rect x="112" y="82" width="56" height="82" rx="4" fill="#2E7A57"/>
+    <circle cx="156" cy="124" r="4" fill="#E2C77E"/>
+  </g>
+  <g transform="translate(34 186)">
+    <path d="M10 48 L4 20 H36 L30 48 Z" fill="#C9A24B"/>
+    <path d="M20 20 Q6 0 0 -6 M20 20 Q24 -4 30 -12 M20 20 Q34 4 44 2" fill="none" stroke="#2E7A57" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <rect x="0" y="234" width="400" height="26" fill="#0F3D2A"/>
+</svg>
